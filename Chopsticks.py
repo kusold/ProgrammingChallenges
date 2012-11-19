@@ -14,7 +14,7 @@ def main(args):
 
     def populateListFromInput(file):
         try:
-            input = open("C:/Sample.txt", 'r').read().splitlines()
+            input = open(file, 'r').read().splitlines()
         except:
             print "Unable to open file"
             exit(3)
