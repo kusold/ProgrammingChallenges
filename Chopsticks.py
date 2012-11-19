@@ -18,7 +18,6 @@ def main(args):
         except:
             print "Unable to open file"
             exit(3)
-
         ns.inputList = splitInputFile(input)
 
         # Error Handling *should* be added here, but I am trusting the user for valid inputs.
@@ -82,7 +81,7 @@ def main(args):
         return total
 
     # Read in input and assign values
-    inputFileLocation = args[0]
+    inputFileLocation = args[1]
     #inputFileLocation = "C:/Sample.txt"
     populateListFromInput(inputFileLocation)
 
