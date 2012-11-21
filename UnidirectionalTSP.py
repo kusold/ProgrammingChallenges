@@ -48,42 +48,44 @@ def main(args):
             DFS(matrix, [i,0], [], 0)
         
     def DFS(matrix, vertex, path, cost):
-        for edge in adjacent_edges(vertex[0], vertex[1]):
+        #print "Vertex: " + str(matrix[vertex[0]][vertex[1]])
+        node = matrix[vertex[0]][vertex[1]]
+        path.append(node)
+        cost += node
+
+        for edge in temp_adjacent_edges(vertex[0], vertex[1]):
             if edge == [-1,-1]:
-                if cost < ns.cheap_weight:
+                if cost < ns.cheap_weight or ns.cheap_path == []:
                     ns.cheap_weight = cost
                     ns.cheap_path = path
-                return    
-            node = matrix[edge[0]][edge[1]]
-            path.append(node)
-            cost += node
-            print node
+                return [path, cost]    
+            #node = matrix[edge[0]][edge[1]]
+            #path.append(node)
+            #cost += node
+            #print "Node: " + str(node)
             DFS(matrix, edge, path, cost)
-
 
     def adjacent_edges(row, col):
         # Check to see if it is the last column
-        if col == (ns.num_of_columns - 1):
-            return [-1,-1]
+        if col == (ns.num_of_columns - 1):            
+            return [[-1,-1]]
 
         edges = []
         # Check to see if we need to loop around to the bottom
         if row == 0: # top
-            edges.append([ns.num_of_rows - 1 , col + 1])
+            edges.append([row, col + 1]) # straight
+            edges.append([row + 1, col + 1]) # down
+            edges.append([ns.num_of_rows - 1 , col + 1]) # up
+        elif row == ns.num_of_rows - 1: # bottom:
+            edges.append([0, col + 1]) # down
+            edges.append([row - 1, col + 1]) # up
+            edges.append([row, col + 1]) # straight
         else:
-            edges.append([row - 1, col + 1])
-
-        edges.append([row, col + 1]) # middle
-
-        if row == ns.num_of_rows - 1: # bottom
-            edges.append([0, col + 1])
-        else:
-            edges.append([row + 1, col + 1])
+            edges.append([row - 1, col + 1]) # up
+            edges.append([row, col + 1]) # straight
+            edges.append([row + 1, col + 1]) # down
 
         return edges
-
-
-
 
     # Read in input and assign values
     #inputFileLocation = args[1]
@@ -99,6 +101,8 @@ def main(args):
     print "input_list: "
     pretty_print_2D_list(ns.input_list) # For Debugging
     DFS_start(ns.matrix)
+    print ns.cheap_path
+    print ns.cheap_weight
     # Hold CLI open when the program is finished
     raw_input()
 
