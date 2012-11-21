@@ -53,17 +53,21 @@ def main(args):
         path.append(node)
         cost += node
 
-        for edge in temp_adjacent_edges(vertex[0], vertex[1]):
+        for edge in adjacent_edges(vertex[0], vertex[1]):
             if edge == [-1,-1]:
+                if vertex[1] != 5:
+                    print "row: " + str(vertex[0])
+                    print "col: " + str(vertex[1])
                 if cost < ns.cheap_weight or ns.cheap_path == []:
                     ns.cheap_weight = cost
                     ns.cheap_path = path
-                return [path, cost]    
-            #node = matrix[edge[0]][edge[1]]
-            #path.append(node)
-            #cost += node
-            #print "Node: " + str(node)
+                    print ns.cheap_path
+                    print len(ns.cheap_path)
+
+                return
             DFS(matrix, edge, path, cost)
+            path.pop()
+
 
     def adjacent_edges(row, col):
         # Check to see if it is the last column
@@ -101,6 +105,7 @@ def main(args):
     print "input_list: "
     pretty_print_2D_list(ns.input_list) # For Debugging
     DFS_start(ns.matrix)
+    print "ns.cheap_path: "
     print ns.cheap_path
     print ns.cheap_weight
     # Hold CLI open when the program is finished
