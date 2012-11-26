@@ -56,13 +56,13 @@ def main(args):
 
         for edge in adjacent_edges(vertex[0], vertex[1]):
             if edge == [-1,-1]:
-                if cost < ns.cheap_weight or ns.cheap_path == []:
+                if cost < ns.cheap_weight or not ns.cheap_path:
                     ns.cheap_weight = cost
-                    ns.cheap_path = path
+                    ns.cheap_path = list(path)
                     print ns.cheap_path
                     print len(ns.cheap_path)
-
                 return
+
             DFS(matrix, edge, path, cost)
             path.pop()
 
