@@ -59,8 +59,6 @@ def main(args):
                 if cost < ns.cheap_weight or not ns.cheap_path:
                     ns.cheap_weight = cost
                     ns.cheap_path = list(path)
-                    print ns.cheap_path
-                    print len(ns.cheap_path)
                 return
 
             DFS(matrix, edge, path, cost)
