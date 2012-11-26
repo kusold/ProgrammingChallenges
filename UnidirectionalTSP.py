@@ -16,6 +16,7 @@ def main(args):
             input = open(file, 'r').read().splitlines()
         except:
             print "Unable to open file"
+            raw_input()
             exit(3)
         return split_input_file(input)
 
@@ -55,9 +56,6 @@ def main(args):
 
         for edge in adjacent_edges(vertex[0], vertex[1]):
             if edge == [-1,-1]:
-                if vertex[1] != 5:
-                    print "row: " + str(vertex[0])
-                    print "col: " + str(vertex[1])
                 if cost < ns.cheap_weight or ns.cheap_path == []:
                     ns.cheap_weight = cost
                     ns.cheap_path = path
