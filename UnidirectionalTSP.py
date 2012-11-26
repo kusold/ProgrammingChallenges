@@ -41,8 +41,23 @@ def main(args):
         row = ns.input_list.pop(0)
         ns.num_of_rows = row.pop(0)
         ns.num_of_columns = row.pop(0)
-        for i in range(1, ns.num_of_columns):
+        for i in range(0, ns.num_of_rows):
             ns.matrix.append(ns.input_list.pop(0))
+
+    def reset_variables():
+        ns.matrix = []
+        ns.cheap_path = []
+        ns.cheap_weight = 0
+        ns.num_of_columns = 0
+        ns.num_of_rows = 0
+
+    def debug_prints():
+        print "ns.num_of_rows: " + str(ns.num_of_rows)
+        print "ns.num_of_columns: " + str(ns.num_of_columns)
+        print "ns.matrix: "
+        pretty_print_2D_list(ns.matrix)
+        print "input_list: "
+        pretty_print_2D_list(ns.input_list) # For Debugging
 
     def DFS_start(matrix):
         for i in range(0, ns.num_of_rows):
@@ -92,18 +107,15 @@ def main(args):
     #inputFileLocation = "C:/Sample.txt"
     ns.input_list = get_input(inputFileLocation)
     ns.input_list = convert_2D_list_to_int(ns.input_list)
-    get_complete_matrix()
 
-    print "ns.num_of_rows: " + str(ns.num_of_rows)
-    print "ns.num_of_columns: " + str(ns.num_of_columns)
-    print "ns.matrix: "
-    pretty_print_2D_list(ns.matrix)
-    print "input_list: "
-    pretty_print_2D_list(ns.input_list) # For Debugging
-    DFS_start(ns.matrix)
-    print "ns.cheap_path: "
-    print ns.cheap_path
-    print ns.cheap_weight
+    while(ns.input_list):
+        reset_variables()
+        get_complete_matrix()
+        #debug_prints()
+        DFS_start(ns.matrix)
+        #print "ns.cheap_path: "
+        print ns.cheap_path
+        print ns.cheap_weight
     # Hold CLI open when the program is finished
     raw_input()
 
