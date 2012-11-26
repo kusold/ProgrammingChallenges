@@ -88,8 +88,8 @@ def main(args):
         return edges
 
     # Read in input and assign values
-    #inputFileLocation = args[1]
-    inputFileLocation = "C:/Sample.txt"
+    inputFileLocation = args[1]
+    #inputFileLocation = "C:/Sample.txt"
     ns.input_list = get_input(inputFileLocation)
     ns.input_list = convert_2D_list_to_int(ns.input_list)
     get_complete_matrix()
