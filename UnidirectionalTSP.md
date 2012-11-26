@@ -6,13 +6,13 @@ This problem deals with finding a minimal path through a grid of points while tr
 ## The Problem
 Given an `m x n`  matrix of integers, you are to write a program that computes a path of minimal weight. A path starts anywhere in column 1 (the first column) and consists of a sequence of steps terminating in column `n` (the last column). A step consists of traveling from column `i` to column `i+1` in an adjacent (horizontal or diagonal) row. The first and last rows (rows 1 and `m`) of a matrix are considered adjacent, i.e., the matrix "wraps" so that it represents a horizontal cylinder. Legal steps are illustrated below.
 
-![Valid Moves](images/UnidirectionalTSP_1.gif)
+![Valid Moves](https://raw.github.com/Kusold/ProgrammingChallenges/master/images/UnidirectionalTSP_1.gif)
  
 The weight of a path is the sum of the integers in each of the n cells of the matrix that are visited.
 
 For example, two slightly different `5 x 6`   matrices are shown below (the only difference is the numbers in the bottom row).
 
-![Valid Moves](images/UnidirectionalTSP_2.gif)
+![Valid Moves](https://raw.github.com/Kusold/ProgrammingChallenges/master/images/UnidirectionalTSP_2.gif)
 
 The minimal path is illustrated for each matrix. Note that the path for the matrix on the right takes advantage of the adjacency property of the first and last rows.
 
