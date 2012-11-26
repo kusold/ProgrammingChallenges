@@ -51,7 +51,7 @@ def main(args):
     def DFS(matrix, vertex, path, cost):
         #print "Vertex: " + str(matrix[vertex[0]][vertex[1]])
         node = matrix[vertex[0]][vertex[1]]
-        path.append(node)
+        path.append(vertex[0] + 1) # +1 because lists are 0 indexed
         cost += node
 
         for edge in adjacent_edges(vertex[0], vertex[1]):
