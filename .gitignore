@@ -1,3 +1,9 @@
+## Project Specific
+# Used for py2exe.exe
+setup.py
+# Used by Python for Visual Studio
+ProgrammingChallenges.pyproj
+
 #################
 ## Eclipse
 #################
